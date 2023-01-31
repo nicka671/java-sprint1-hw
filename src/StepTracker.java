@@ -19,6 +19,10 @@ public class StepTracker
     }
 
     void addNewNumberStepsPerDay() {
+
+        // Как тут сделать break c меткой, чтобы в случае ввода неправильного значения месяца, дня и
+        // количества шагов программа заставляла нас заново их ввести?
+
         System.out.println("Введите номер месяца");
         int month = scanner.nextInt();
         if (month >= 0 && month <= 11) {
