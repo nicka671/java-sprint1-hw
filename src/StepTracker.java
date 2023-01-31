@@ -29,30 +29,39 @@ public class StepTracker
                 int step = scanner.nextInt();
                 if (step > 0) {
                     monthToData[month].days[day - 1] = step;
+                    return;
                 } else {
-                    System.out.println("Введите номер дня от 1 до 30 включительно");
-                    step = scanner.nextInt();
+                    System.out.println("Количество шагов должно быть положительным числом!");
+                    return;
                 }
-
             } else {
 
                 System.out.println("Введите номер дня от 1 до 30 включительно");
-                day = scanner.nextInt();
+                return;
             }
 
         } else {
             System.out.println("Введите номер месяца от 0 до 11 включительно");
-            month = scanner.nextInt();
+            return;
 
         }
+
     }
+
+
+
 
     void goalByStepsPerDay() {
         int stepsOfUser = scanner.nextInt();
-        if (!(stepsOfUser <= 0))
+        if (stepsOfUser > 0)
         {
             goalByStepsPerDay = stepsOfUser;
+            return;
+
+        } else {
+            System.out.println("Количество шагов должно быть больше 0!");
         }
+
     }
 
 
@@ -60,7 +69,7 @@ public class StepTracker
     {
         System.out.println("Введите номер месяца");
         int monthNumber = scanner.nextInt();
-        if ( monthNumber >= 0 && monthNumber <= 11)
+        if (monthNumber >= 0 && monthNumber <= 11)
         {
             monthToData[monthNumber].printDaysAndStepsFromMonth();
             System.out.println("Сумма шагов за месяц: " + monthToData[monthNumber].sumStepsFromMonth());
@@ -69,7 +78,12 @@ public class StepTracker
             System.out.println("Пройденная дистанция в км: " + converter.convertToKm(monthToData[monthNumber].sumStepsFromMonth()));
             System.out.println("Сколько ккал вы сожгли: " +converter.convertStepsToKilocalories(monthToData[monthNumber].sumStepsFromMonth()));
             System.out.println("Самая долгая серия дней, где поставленная цель по шагам была достигнута: " + monthToData[monthNumber].bestSeries(goalByStepsPerDay));
+            return;
+        } else {
+            System.out.println("Введите, пожалуйста, номер месяца в интервале от 0 до 11 включительно!");
+            return;
+
         }
+
     }
 }
-

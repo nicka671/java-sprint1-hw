@@ -11,6 +11,7 @@ public class Main
 
     public static void printMenu()
     {
+        System.out.println("МЕНЮ:");
         System.out.println("1 - ввести количество шагов за определённый день");
         System.out.println("2 - изменить цель по количеству шагов в день");
         System.out.println("3 - напечатать статистику за определённый месяц");
@@ -30,8 +31,6 @@ public class Main
 
 
         Main.hello();
-
-
         {
             if (username.equals("")) {
                 System.out.println("Добро пожаловать, введите имя!");
@@ -56,37 +55,36 @@ public class Main
         }
 
 
-        int number = scanner.nextInt();
+
 
 
         while (true)
         {
+            int number = scanner.nextInt();
+
             if (number == 1)
             {
                 System.out.println("Выполняется команда 1");
                 stepTracker.addNewNumberStepsPerDay();
-                break;
-
-
+                System.out.println("Команда завершена");
+                Main.printMenu();
             } else if (number == 2)
             {
                 System.out.println("Выполняется команда 2");
                 System.out.println("Введите число шагов, которое является целью");
                 stepTracker.goalByStepsPerDay();
-                break;
-
+                System.out.println("Команда завершена");
+                Main.printMenu();
             } else if (number == 3)
             {
                 System.out.println("Выполняется команда 3");
                 stepTracker.printStatistic();
-                break;
-
+                System.out.println("Команда завершена");
+                Main.printMenu();
             } else if ( number == 0) {
                 return;
-
             } else {
                 System.out.println("Такой команды нет");
-                return;
             }
         }
 

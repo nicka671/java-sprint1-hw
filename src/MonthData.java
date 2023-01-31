@@ -37,21 +37,22 @@ public class MonthData
         int bestSession = 0;
         int countBest = 0;
         for (int i = 0; i < 30; i++) {
-            if (days[i] > goalByStepsPerDay && days[i+1] > goalByStepsPerDay)
+            if (i != 29)
             {
-                countBest += 1;
-            } else if (days[i] > goalByStepsPerDay && days[i+1] < goalByStepsPerDay)
-            {
-                countBest += 1;
-                if (bestSession <= countBest)
+                if (days[i] >= goalByStepsPerDay && days[i+1] >= goalByStepsPerDay)
                 {
-                    bestSession = countBest;
-                    countBest = 0;
-                } else {
-                    countBest = 0;
+                    countBest += 1;
+                } else if (days[i] >= goalByStepsPerDay && days[i+1] < goalByStepsPerDay) {
+                    countBest += 1;
+                    if (bestSession <= countBest) {
+                        bestSession = countBest;
+                        countBest = 0;
+                    } else {
+                        countBest = 0;
+                    }
                 }
 
-            } else if (days[29] > goalByStepsPerDay)
+            } else if (days[29] >= goalByStepsPerDay)
             {
                 countBest += 1;
 
